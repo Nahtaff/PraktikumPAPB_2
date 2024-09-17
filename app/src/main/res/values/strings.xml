@@ -1,3 +1,7 @@
 <resources>
+<<<<<<< HEAD
     <string name="app_name">TugasPAPB2</string>
+=======
+    <string name="app_name">ProjectComposedD</string>
+>>>>>>> bb5e0092388390fe50f744068156f0b668552d73
 </resources>

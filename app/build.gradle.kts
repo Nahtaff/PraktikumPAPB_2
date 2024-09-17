@@ -4,11 +4,19 @@ plugins {
 }
 
 android {
+<<<<<<< HEAD
     namespace = "com.tifd.tugaspapb2"
     compileSdk = 34
 
     defaultConfig {
         applicationId = "com.tifd.tugaspapb2"
+=======
+    namespace = "com.tifd.projectcomposedd"
+    compileSdk = 34
+
+    defaultConfig {
+        applicationId = "com.tifd.projectcomposedd"
+>>>>>>> bb5e0092388390fe50f744068156f0b668552d73
         minSdk = 24
         targetSdk = 34
         versionCode = 1

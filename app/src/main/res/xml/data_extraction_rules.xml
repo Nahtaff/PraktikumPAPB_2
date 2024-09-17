@@ -4,8 +4,13 @@
    for details.
 -->
 <data-extraction-rules>
+<<<<<<< HEAD
     <cloud-backup><![CDATA[
         ]]><!-- TODO: Use <include> and <exclude> to control what is backed up.
+=======
+    <cloud-backup>
+        <!-- TODO: Use <include> and <exclude> to control what is backed up.
+>>>>>>> bb5e0092388390fe50f744068156f0b668552d73
         <include .../>
         <exclude .../>
         -->
