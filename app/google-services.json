@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "109110157862",
+    "project_id": "papb-1bec2",
+    "storage_bucket": "papb-1bec2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:109110157862:android:debc771f55bd964d91fce7",
+        "android_client_info": {
+          "package_name": "com.tifd.tugaspapb3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZEL0AEsci0QBFGf8yDCgzdJ8R14YXbls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

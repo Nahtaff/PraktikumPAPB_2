@@ -1,22 +1,15 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.google.gms.google-services")
 }
 
 android {
-<<<<<<< HEAD
-    namespace = "com.tifd.tugaspapb2"
+    namespace = "com.tifd.tugaspapb3"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.tifd.tugaspapb2"
-=======
-    namespace = "com.tifd.projectcomposedd"
-    compileSdk = 34
-
-    defaultConfig {
-        applicationId = "com.tifd.projectcomposedd"
->>>>>>> bb5e0092388390fe50f744068156f0b668552d73
+        applicationId = "com.tifd.tugaspapb3"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -74,4 +67,9 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation (platform("com.google.firebase:firebase-bom:32.3.1"))
+    implementation ("com.google.firebase:firebase-firestore-ktx")
+    implementation ("com.google.firebase:firebase-auth-ktx")
+    implementation ("com.google.firebase:firebase-firestore:24.6.0")
+    implementation ("com.google.firebase:firebase-database:20.3.0")
 }

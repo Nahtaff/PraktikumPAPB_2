@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-<<<<<<< HEAD
-    <style name="Theme.TugasPAPB2" parent="android:Theme.Material.Light.NoActionBar" />
-=======
-    <style name="Theme.ProjectComposedD" parent="android:Theme.Material.Light.NoActionBar" />
->>>>>>> bb5e0092388390fe50f744068156f0b668552d73
+    <style name="Theme.TugasPAPB3" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>
