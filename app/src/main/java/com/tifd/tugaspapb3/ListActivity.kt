@@ -6,27 +6,18 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.tifd.tugaspapb3.ui.theme.TugasPAPB3Theme
 import kotlinx.coroutines.launch
@@ -47,18 +38,19 @@ class ListActivity : ComponentActivity() {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun DataListScreen() {
     val db = FirebaseFirestore.getInstance()
-    LocalContext.current
+    val context = LocalContext.current
     var dataList by remember { mutableStateOf(listOf<DataModel>()) }
     var isLoading by remember { mutableStateOf(true) }
     var isError by remember { mutableStateOf(false) }
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
 
-    // Fetch data on component mount
+    // Mengambil data dari Firestore saat komponen diload
     LaunchedEffect(Unit) {
         loadDataFromFirestore(db, { data ->
             dataList = data
@@ -67,14 +59,45 @@ fun DataListScreen() {
             isLoading = false
             isError = true
             coroutineScope.launch {
-                snackbarHostState.showSnackbar("Failed to load data.")
+                snackbarHostState.showSnackbar("Gagal memuat data.")
             }
         })
     }
 
     Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Jadwal Kuliah") },
+                actions = {
+                    IconButton(onClick = {
+                        // Navigasi ke GithubProfile saat tombol GitHub ditekan
+                        val intent = Intent(context, GithubProfile::class.java)
+                        context.startActivity(intent)
+                    }) {
+                        Icon(
+                            imageVector = Icons.Default.AccountCircle, // Icon GitHub
+                            contentDescription = "Lihat Profil GitHub"
+                        )
+                    }
+                }
+            )
+        },
         snackbarHost = {
             SnackbarHost(hostState = snackbarHostState)
+        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = {
+                    // Aksi saat FAB ditekan
+                    Toast.makeText(context, "FAB ditekan", Toast.LENGTH_SHORT).show()
+                },
+                containerColor = MaterialTheme.colorScheme.primary
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Add, // Ganti dengan ikon lain jika diperlukan
+                    contentDescription = "Tambah"
+                )
+            }
         }
     ) {
         if (isLoading) {
@@ -97,9 +120,13 @@ fun LoadingView() {
 @Composable
 fun ErrorView() {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text(text = "Error loading data", color = Color.Red, style = MaterialTheme.typography.bodyMedium)
+        Text(text = "Error loading data",  style = MaterialTheme.typography.bodyMedium)
     }
 }
+
+
+
+
 
 @Composable
 fun DataListView(dataList: List<DataModel>) {
@@ -132,7 +159,7 @@ fun loadDataFromFirestore(
                         ruang = document.getString("ruang") ?: "-"
                     )
                 } catch (e: Exception) {
-                    null // Handle potential conversion errors
+                    null // Mengatasi error konversi
                 }
             }
             onSuccess(items.sortedWith(
@@ -184,4 +211,3 @@ enum class Hari(val urutan: Int) {
         }
     }
 }
-

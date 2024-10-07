@@ -112,9 +112,13 @@ fun LoginPage(modifier: Modifier = Modifier) {
                                 if (task.isSuccessful) {
                                     // Navigate to ListActivity
                                     val intent = Intent(context, ListActivity::class.java)
-                                    contegitt.startActivity(intent)
+                                    context.startActivity(intent) // Pastikan di sini menggunakan 'context'
                                 } else {
-                                    Toast.makeText(context, "Login Failed: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                                    Toast.makeText(
+                                        context,
+                                        "Login Failed: ${task.exception?.message}",
+                                        Toast.LENGTH_LONG
+                                    ).show()
                                 }
                             }
                     } else {
@@ -126,9 +130,13 @@ fun LoginPage(modifier: Modifier = Modifier) {
             ) {
                 Text(text = "Submit")
             }
+
         }
-    }
-}
+
+        }
+
+
+                }
 
 @Preview(showBackground = true)
 @Composable
@@ -137,3 +145,4 @@ fun LoginPagePreview() {
         LoginPage()
     }
 }
+
