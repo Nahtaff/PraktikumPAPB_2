@@ -111,7 +111,7 @@ fun LoginPage(modifier: Modifier = Modifier) {
                             .addOnCompleteListener { task ->
                                 if (task.isSuccessful) {
                                     // Navigate to ListActivity
-                                    val intent = Intent(context, ListActivity::class.java)
+                                    val intent = Intent(context, MainScreenActivity::class.java)
                                     context.startActivity(intent) // Pastikan di sini menggunakan 'context'
                                 } else {
                                     Toast.makeText(

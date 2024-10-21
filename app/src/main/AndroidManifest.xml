@@ -36,6 +36,7 @@
         <activity
             android:name=".GithubProfile"
             />
+        <activity android:name=".MainScreenActivity"/>
 
     </application>
 </manifest>

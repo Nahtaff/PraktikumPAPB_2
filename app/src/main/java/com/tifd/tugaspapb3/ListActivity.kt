@@ -85,20 +85,7 @@ fun DataListScreen() {
         snackbarHost = {
             SnackbarHost(hostState = snackbarHostState)
         },
-        floatingActionButton = {
-            FloatingActionButton(
-                onClick = {
-                    // Aksi saat FAB ditekan
-                    Toast.makeText(context, "FAB ditekan", Toast.LENGTH_SHORT).show()
-                },
-                containerColor = MaterialTheme.colorScheme.primary
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Add, // Ganti dengan ikon lain jika diperlukan
-                    contentDescription = "Tambah"
-                )
-            }
-        }
+
     ) {
         if (isLoading) {
             LoadingView()
